@@ -1,0 +1,28 @@
+def read_and_modify_file(input_filename, output_filename):
+    try:
+        # Step 1: Open the file in read mode and read the contents
+        with open(input_filename, 'r') as input_file:
+            content = input_file.read()
+            print("File read successfully!")
+
+        # Step 2: Modify the content (for example, convert text to uppercase)
+        modified_content = content.upper()  # Example modification
+
+        # Step 3: Write the modified content to a new file
+        with open(output_filename, 'w') as output_file:
+            output_file.write(modified_content)
+            print(f"Modified content written to {output_filename}.")
+
+    except FileNotFoundError:
+        print(f"Error: The file '{input_filename}' was not found.")
+    except PermissionError:
+        print(f"Error: You don't have permission to read/write the file.")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+
+# Ask the user for the filename to read and write
+input_filename = input("Enter the name of the input file (e.g., input.txt): ")
+output_filename = input("Enter the name of the output file (e.g., output.txt): ")
+
+# Call the function to read, modify, and write the file
+read_and_modify_file(input_filename, output_filename)
